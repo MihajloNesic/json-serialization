@@ -4,6 +4,8 @@ import io.gitlab.mihajlonesic.json.JsonElement;
 import io.gitlab.mihajlonesic.json.JsonInit;
 import io.gitlab.mihajlonesic.json.JsonSerializable;
 
+import java.util.*;
+
 @JsonSerializable
 public class Person {
 
@@ -20,7 +22,10 @@ public class Person {
     @JsonElement
     private boolean isMarried;
 
+    @JsonElement
     private Pet pet;
+
+    private Object anyObject;
 
     @JsonElement(required = false)
     private Person spouse;
@@ -42,6 +47,12 @@ public class Person {
 
     @JsonElement(required = false)
     private Person[] children;
+
+    @JsonElement(required = false)
+    private List<Profession> professions = new ArrayList<>();
+
+    @JsonElement(required = false)
+    private Set<Profession> dreamProfessions = new LinkedHashSet<>();
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -157,5 +168,29 @@ public class Person {
 
     public void setPet(Pet pet) {
         this.pet = pet;
+    }
+
+    public Object getAnyObject() {
+        return anyObject;
+    }
+
+    public void setAnyObject(Object anyObject) {
+        this.anyObject = anyObject;
+    }
+
+    public List<Profession> getProfessions() {
+        return professions;
+    }
+
+    public void setProfessions(List<Profession> professions) {
+        this.professions = professions;
+    }
+
+    public Set<Profession> getDreamProfessions() {
+        return dreamProfessions;
+    }
+
+    public void setDreamProfessions(Set<Profession> dreamProfessions) {
+        this.dreamProfessions = dreamProfessions;
     }
 }

@@ -10,19 +10,19 @@ import java.util.regex.Pattern;
 public class Phone {
 
     @JsonElement
-    private String type;
+    private PhoneType type;
     @JsonElement
     private String number;
 
     @JsonElement(required = false)
     private Person owner;
 
-    public Phone(String type, String number) {
+    public Phone(PhoneType type, String number) {
         this.type = type;
         this.number = number;
     }
 
-    public Phone(String type, String number, Person owner) {
+    public Phone(PhoneType type, String number, Person owner) {
         this(type, number);
         this.owner = owner;
     }
@@ -34,11 +34,11 @@ public class Phone {
         }
     }
 
-    public String getType() {
+    public PhoneType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(PhoneType type) {
         this.type = type;
     }
 
